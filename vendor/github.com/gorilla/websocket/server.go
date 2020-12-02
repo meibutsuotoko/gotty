@@ -60,7 +60,8 @@ func (u *Upgrader) returnError(w http.ResponseWriter, r *http.Request, status in
 
 // checkSameOrigin returns true if the origin is not set or is equal to the request host.
 func checkSameOrigin(r *http.Request) bool {
-	origin := r.Header["Origin"]
+	return true
+	/*origin := r.Header["Origin"]
 	if len(origin) == 0 {
 		return true
 	}
@@ -68,7 +69,7 @@ func checkSameOrigin(r *http.Request) bool {
 	if err != nil {
 		return true
 	}
-	return u.Host == r.Host
+	return u.Host == r.Host*/
 }
 
 func (u *Upgrader) selectSubprotocol(r *http.Request, responseHeader http.Header) string {
