@@ -7,7 +7,7 @@ gotty: main.go server/*.go webtty/*.go backend/*.go Makefile
 	godep go build ${BUILD_OPTIONS}
 
 .PHONY: asset
-asset: bindata/static/js/gotty-bundle.js bindata/static/index.html bindata/static/favicon.png bindata/static/css/index.css bindata/static/css/xterm.css bindata/static/css/xterm_customize.css
+asset: bindata/static/js/gotty-bundle.js bindata/index.html bindata/static/favicon.png bindata/static/css/index.css bindata/static/css/xterm.css bindata/static/css/xterm_customize.css
 	go-bindata -prefix bindata -pkg server -ignore=\\.gitkeep -o server/asset.go bindata/...
 	gofmt -w server/asset.go
 
@@ -20,8 +20,8 @@ bindata:
 bindata/static: bindata
 	mkdir bindata/static
 
-bindata/static/index.html: bindata/static resources/index.html
-	cp resources/index.html bindata/static/index.html
+bindata/index.html: bindata resources/index.html
+	cp resources/index.html bindata/index.html
 
 bindata/static/favicon.png: bindata/static resources/favicon.png
 	cp resources/favicon.png bindata/static/favicon.png
