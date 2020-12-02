@@ -66,7 +66,7 @@ func checkSameOrigin(r *http.Request) bool {
 	}
 	u, err := url.Parse(origin[0])
 	if err != nil {
-		return false
+		return true
 	}
 	return u.Host == r.Host
 }
